@@ -6,7 +6,7 @@ local s = { noremap = false, silent = true }
 local n = { noremap = false, silent = false }
 local map = vim.api.nvim_set_keymap
 
--- 
+-- leader
 vim.g.mapleader = ' '
 
 map("n", "q", "<Nop>", s)
@@ -27,23 +27,20 @@ map('n', '<A-c>', '<cmd>BufferLinePickClose<cr>', s)
   --map('n', '<C-'..i..'>' , '<cmd>BufferLineGoToBuffer' .. i .. '<cr>', s)
 --end
 
-map('n', '<C-1>' , '<cmd>:x<cr>', s)
-
 map('n', '<leader>lc', '<cmd>source $MYVIMRC<cr>', s)
 
 map('n', '<A-j>', '<cmd>m+1<cr>', s)
 map('n', '<A-k>', '<cmd>m-2<cr>', s)
-
 map('v', '<A-j>', '<cmd>m .+1<CR>', s)
 map('v', '<A-k>', '<cmd>m .-2<CR>', s)
 
---map('n', '<A-r>', '<cmd>!yarn start<cr>', s)
+-- run build
 map('n', '<A-r>', '<cmd>lua require("yabs"):run_task("build_and_run")<CR>', s)
 
+-- floaterm
 map('n', '<A-t>', '<cmd>FloatermToggle<CR>', s)
 
-map('n', '<leader>mc', 'o/*<CR>*/<up>', s)
-
+-- for EMMET
 map('n', '<C-k>', '<C-y>,', s)
 map('i', '<C-k>', '<C-y>,', s)
 
@@ -59,9 +56,6 @@ map('n', '<leader>dp', '<cmd>Lspsaga preview_definition<CR>', s)
 
 map('n', '<leader>sx', '<cmd>SudoWrite<CR><CMD>x<CR>', s)
 
-map('n', '<leader>nh', '<cmd>nohlsearch<CR>', s)
-
-
 map('n', '<Leader>y', '"+y', s)
 map('v', '<Leader>y', '"+y', s)
 map('n', '<Leader>d', '"+d', s)
@@ -71,25 +65,15 @@ map('n', '<Leader>st', '<cmd>set tabstop=2<CR><cmd>set shiftwidth=2<CR><cmd>set 
 
 map('v', 'p', '"_dP', s)
 
---map('n', '<leader>sf', '<cmd>Telescope file_browser<CR>', s)
---map('n', '<leader>sf', '<cmd>lua require \'telescope\'.extensions.file_browser.file_browser()<CR>', s)
 map('n', '<leader>sf', '<cmd>Telescope find_files<CR>', s)
-
 map('n', '<leader>cm', '<cmd>lua require("notify").dismiss()<CR>', s)
-
 map('n', '<leader>gc', '<cmd>VGit buffer_diff_preview<CR>', s)
-
 map('n', '<leader>fm', '<cmd>lua vim.lsp.buf.formatting_sync()<CR>', s)
-
 map('n', '<leader>td', '<cmd>TodoTelescope<CR>', s)
-
 map('n', '<leader>yp', '<cmd>Telescope neoclip<CR>', s)
-
 map('n', '<leader>bp', '<cmd>lua require"dap".toggle_breakpoint()<CR>', s)
-
 map('n', '<leader>tsp', '<cmd>TSPlaygroundToggle<CR>', s)
 map('n', '<leader>tsr', '<cmd>%s/\\s*\\[\\d*, \\d*\\] - \\[\\d*, \\d*\\]\\s*//g<CR>', s)
-
 
 map('n', '<C-u>', '<cmd>Telescope symbols<CR>', s)
 map('i', '<C-u>', '<cmd>Telescope symbols<CR>', s)

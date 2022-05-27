@@ -22,7 +22,6 @@ cmp.setup({
   ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
   ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
   ['<C-e>'] = cmp.mapping.close(),
-  --['<Tab>'] = cmp.mapping.confirm({select = true}),
   ['<Tab>'] = cmp.mapping(function(fallback)
     if cmp.visible() then
       cmp.confirm({select = true})
@@ -31,37 +30,11 @@ cmp.setup({
     else fallback()
     end
   end, { "i", "s" })
-  --['<CR>'] = cmp.mapping.confirm({ select = true }),
 },
 formatting = {
-  --format = function(entry, vim_item)
-    --vim_item.kind = lspkind.presets.default[vim_item.kind]
-    --local menu = source_mapping[entry.source.name]
-    --if entry.source.name == 'cmp_tabnine' then
-      --if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-        --menu = entry.completion_item.data.detail .. ' ' .. menu
-      --end
-      --vim_item.kind = ''
-    --end
-    --vim_item.menu = menu
-    --return vim_item
-  --end,
-
   format = lspkind.cmp_format({
-      mode = 'symbol', -- show only symbol annotations
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-
-      -- The function below will be called before any actual modifications from lspkind
-      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-      --before = function (entry, vim_item)
-        --local menu = source_mapping[entry.source.name]
-        --if entry.source.name == 'cmp_tabnine' then
-          --if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-            --menu = entry.completion_item.data.detail .. ' ' .. menu
-          --end
-          --vim_item.kind = ''
-        --end
-      --end
+      mode = 'symbol',
+      maxwidth = 50,
     })
   },
   sources = cmp.config.sources({
