@@ -1,0 +1,12 @@
+{
+  "name": "tree-sitter-tstl",
+  "version": "1.0.0",
+  "description": "A very very simpel tree-sitter grammar for the tree-sitter test language",
+  "main": "bindings/node",
+  "author": "Mia75owo",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "nan": "^2.15.0"
+  }
+}
