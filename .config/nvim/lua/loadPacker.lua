@@ -7,15 +7,16 @@ local fn = vim.fn
 -- Install packer
 local packer_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(packer_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system {
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    packer_path
-    }
-    print "Installing packer please restart Neovim"
+  PACKER_BOOTSTRAP = fn.system {
+  "git",
+  "clone",
+  "--depth",
+  "1",
+  "https://github.com/wbthomason/packer.nvim",
+  packer_path
+  }
+	vim.cmd'packerSync'
+  print "Installing packer please restart Neovim"
 end
 
 -- refresh plugins when the plugin file is saved
@@ -40,7 +41,6 @@ packer.startup{{...},
   }
 }
 require('packer_compiled')
-require('impatient')
 
 packer.init {
   display = {

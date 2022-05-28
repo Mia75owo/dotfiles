@@ -3,7 +3,6 @@
 --   \/   |_____| __|__    |   
 
 local vgit = require('vgit')
---local utils = require('vgit.utils')
 
 require('vgit').setup({
   keymaps = {

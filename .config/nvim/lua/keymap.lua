@@ -81,3 +81,7 @@ map('v', '<C-u>', '<cmd>Telescope symbols<CR>', s)
 
 -- Insert
 map('n', '<leader>mh', '<cmd>lua vim.api.nvim_exec([[.!figlet -w999 -d ~/.config/figlet/fonts -f "Cyberlarge" ]]..vim.api.nvim_buf_get_name(0):match("^.+/(.+)$"):match(".*%."):sub(1, -2), false)<CR>', s)
+
+vim.api.nvim_exec([[
+	nnoremap <F8> :%s/\<<C-r><C-w>\>//g<Left><Left>
+]], false)

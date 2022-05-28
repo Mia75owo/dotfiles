@@ -34,11 +34,6 @@ local opt = {
   scrolloff = 8,
 }
 
-vim.api.nvim_exec([[
-    nnoremap <F8> :%s/\<<C-r><C-w>\>//g<Left><Left>
-
-]], false)
-
 local global = {
   dracula_colorterm = 0,
   ["clang_format#style_options"] = "160",
@@ -66,6 +61,8 @@ vim.api.nvim_create_autocmd('FileType', {
   group = lexicalAU,
   command = 'highlight String guifg=#FFEB95'
 })
+
+-- spell check
 vim.cmd[[
   autocmd FileType markdown,mkd call lexical#init()
   autocmd FileType textile call lexical#init()
@@ -74,16 +71,11 @@ vim.cmd[[
 
 g["imager#filetypes"] = { ".md" }
 
---vim.cmd("colorscheme onedark")
+-- set the colorscheme
 vim.cmd("colorscheme tokyonight")
+--vim.cmd("colorscheme onedark")
 --vim.cmd("colorscheme codedark")
 --vim.cmd("colorscheme vscode")
 
 vim.cmd("highlight link FidgetTitle Function")
 vim.cmd("highlight link FidgetTask hlLineNr")
-
---vim.api.nvim_exec([[
---autocmd StdinReadPre * let s:std_in=1
---autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
---    \ execute 'CHADopen' | execute 'cd '.argv()[0] | endif
---]], false)

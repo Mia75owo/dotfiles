@@ -1,9 +1,9 @@
---███╗   ██╗██╗   ██╗██╗███╗   ███╗
---████╗  ██║██║   ██║██║████╗ ████║
---██╔██╗ ██║██║   ██║██║██╔████╔██║
---██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║
---██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║
---╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+-- ███╗   ██╗██╗   ██╗██╗███╗   ███╗
+-- ████╗  ██║██║   ██║██║████╗ ████║
+-- ██╔██╗ ██║██║   ██║██║██╔████╔██║
+-- ██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║
+-- ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║
+-- ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
 
 -- add vimfiles directory
 vim.api.nvim_exec("set runtimepath+=/usr/share/vim/vimfiles", false)
@@ -12,11 +12,13 @@ vim.api.nvim_exec("set runtimepath+=/usr/share/vim/vimfiles", false)
 -- so when there is an error it loads the most important
 -- things first
 
-require('impatient').enable_profile()
-
 -- base settings
 require('keymap')
 require('settings')
+
+-- load plugins
+require('loadPacker')
+require('impatient')
 require('plugins')
 
 -- base UI plugins
@@ -28,7 +30,7 @@ require('cfg.windline')
 
 require('cfg.neoclip')
 require('cfg.lspkind')
---require('cfg.vgit')
+require('cfg.vgit')
 require('cfg.yabs')
 require('cfg.indent')
 require('cfg.notify')
