@@ -1,5 +1,9 @@
 local M = {}
 
-M.lua = {}
+M.sumneko_lua = {
+	diagnostics = {
+		globals = { "vim" }
+	}
+}
 
 return M

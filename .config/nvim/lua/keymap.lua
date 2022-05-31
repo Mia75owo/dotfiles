@@ -1,6 +1,6 @@
--- _     _ _______ __   __ _______ _______  _____ 
+-- _     _ _______ __   __ _______ _______  _____
 -- |____/  |______   \_/   |  |  | |_____| |_____]
--- |    \_ |______    |    |  |  | |     | |      
+-- |    \_ |______    |    |  |  | |     | |
 
 local s = { noremap = false, silent = true }
 local n = { noremap = false, silent = false }
@@ -9,26 +9,35 @@ local map = vim.api.nvim_set_keymap
 -- leader
 vim.g.mapleader = ' '
 
+-- disable recording of macros
 map("n", "q", "<Nop>", s)
 
+-- file browser
 map("n", "qq", "<cmd>NvimTreeToggle<CR>", s)
+-- comments
 map("n", "##", "<plug>NERDCommenterToggle", s)
 map("v", "##", "<plug>NERDCommenterToggle", s)
+-- just insert console.log()
 map("n", "cl", "oconsole.log();<left><left>", s)
 
+-- save
 map("n", "<C-s>", "<cmd>w<CR>", s)
+map("i", "<C-s>", "<cmd>w<CR>", s)
+map("v", "<C-s>", "<cmd>w<CR>", s)
+
+-- =======
+-- Buffers
+-- =======
+
 map('n', '<A-h>', '<cmd>BufferLineCyclePrev<cr>', s)
 map('n', '<A-l>', '<cmd>BufferLineCycleNext<cr>', s)
+-- move from buffer to buffer
 map('n', 'H', '<cmd>BufferLineMovePrev<cr>', s)
 map('n', 'L', '<cmd>BufferLineMoveNext<cr>', s)
+-- close buffers
 map('n', '<A-c>', '<cmd>BufferLinePickClose<cr>', s)
 
---for i=1, 9 do
-  --map('n', '<C-'..i..'>' , '<cmd>BufferLineGoToBuffer' .. i .. '<cr>', s)
---end
-
-map('n', '<leader>lc', '<cmd>source $MYVIMRC<cr>', s)
-
+--move lines up and down
 map('n', '<A-j>', '<cmd>m+1<cr>', s)
 map('n', '<A-k>', '<cmd>m-2<cr>', s)
 map('v', '<A-j>', '<cmd>m .+1<CR>', s)
@@ -44,6 +53,10 @@ map('n', '<A-t>', '<cmd>FloatermToggle<CR>', s)
 map('n', '<C-k>', '<C-y>,', s)
 map('i', '<C-k>', '<C-y>,', s)
 
+-- ===========
+-- Diagnostics
+-- ===========
+
 map('n', '<leader>es', '<cmd>Telescope diagnostics<CR>', s)
 map('n', '<leader>en', '<cmd>Lspsaga diagnostic_jump_next<CR>', s)
 map('n', '<leader>eN', '<cmd>Lspsaga diagnostic_jump_prev<CR>', s)
@@ -56,13 +69,16 @@ map('n', '<leader>dp', '<cmd>Lspsaga preview_definition<CR>', s)
 
 map('n', '<leader>sx', '<cmd>SudoWrite<CR><CMD>x<CR>', s)
 
+-- copy to clipboard
 map('n', '<Leader>y', '"+y', s)
 map('v', '<Leader>y', '"+y', s)
 map('n', '<Leader>d', '"+d', s)
 map('v', '<Leader>d', '"+d', s)
 
+-- set the tabwidth to 2 spaces
 map('n', '<Leader>st', '<cmd>set tabstop=2<CR><cmd>set shiftwidth=2<CR><cmd>set softtabstop=2<CR>', s)
 
+-- replace paste
 map('v', 'p', '"_dP', s)
 
 map('n', '<leader>sf', '<cmd>Telescope find_files<CR>', s)
@@ -75,6 +91,7 @@ map('n', '<leader>bp', '<cmd>lua require"dap".toggle_breakpoint()<CR>', s)
 map('n', '<leader>tsp', '<cmd>TSPlaygroundToggle<CR>', s)
 map('n', '<leader>tsr', '<cmd>%s/\\s*\\[\\d*, \\d*\\] - \\[\\d*, \\d*\\]\\s*//g<CR>', s)
 
+-- telescope symbols
 map('n', '<C-u>', '<cmd>Telescope symbols<CR>', s)
 map('i', '<C-u>', '<cmd>Telescope symbols<CR>', s)
 map('v', '<C-u>', '<cmd>Telescope symbols<CR>', s)

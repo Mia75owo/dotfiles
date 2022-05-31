@@ -30,16 +30,17 @@ alias "btop"="btop --utf-force"
 alias "notes"="nvim ~/own/notes"
 alias "ls"="exa --icons"
 alias "cat"="bat"
+alias "icat"="kitty +icat"
 alias "tiv"="tiv -a -j --no-dot"
 alias "time"="hyperfine --warmup 5"
 alias "docker_clean_images"='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias "docker_clean_ps"='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 alias "ncdu"="ncdu --color=dark"
 alias "gitf"="onefetch"
-alias "figlet"="figlet -d ~/.config/figlet/fonts -f 'ANSI Shadow'"
-alias "figlethead"="figlet -w999 -d ~/.config/figlet/fonts -f 'Cyberlarge'"
+alias "figlethead"="figlet -w999 -d ~/.config/figlet/fonts -f 'ANSI Shadow'"
 alias "figletsub"="figlet -w999 -d ~/.config/figlet/fonts -f 'Cyberlarge'"
 alias "dotfiles"="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias "clip"="xclip -selection c"
 
 # load plugins
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

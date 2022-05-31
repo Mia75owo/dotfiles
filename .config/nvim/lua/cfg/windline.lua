@@ -49,6 +49,8 @@ local hl_list = {
 	Black    = { 'white'      , 'black'      },
 	Inactive = { 'InactiveFg' , 'InactiveBg' },
 	Active   = { 'ActiveFg'   , 'ActiveBg'   },
+	Inactive = { 'InactiveFg' , 'InactiveBg' },
+	Active   = { 'ActiveFg'   , 'ActiveBg'   },
 }
 local basic = {}
 
@@ -78,11 +80,11 @@ basic.vi_mode= {
 basic.vi_mode_sep =  {
 	name = 'vi_mode_sep',
 	hl_colors = {
-		Normal  = {'rainbow', 'FilenameBg'},
-		Insert  = {'cyan', 'FilenameBg'},
-		Visual  = {'blue', 'FilenameBg'},
-		Replace = {'red', 'FilenameBg'},
-		Command = {'yellow', 'FilenameBg'},
+		Normal  = {'rainbow', 'NormalBg'},
+		Insert  = {'cyan', 'NormalBg'},
+		Visual  = {'blue', 'NormalBg'},
+		Replace = {'red', 'NormalBg'},
+		Command = {'yellow', 'NormalBg'},
 	},
 	text = function() return sep.right_rounded end,
 	hl = function () return state.mode[2] end,
@@ -90,7 +92,7 @@ basic.vi_mode_sep =  {
 
 basic.file_name = {
 	text = basic_comps.file_name(),
-	hl_colors = {'FilenameFg', 'FilenameBg'}
+	hl_colors = {'FilenameFg', 'NormalBg'}
 }
 
 -- Disgnostics
@@ -202,7 +204,7 @@ local default = {
 		basic.file_name,
 		arrow_left,
 		-- the big rainbow seperator
-		{' ',{'FilenameBg', 'arrowwhite'}},
+		{' ',{'NormalBg', 'arrowwhite'}},
 
 		-- lsp diagnostics
 		basic.lsp_diagnos,
@@ -309,7 +311,7 @@ local markdown = {
 windline.setup({
 	colors_name = function(colors)
 		colors.FilenameFg = colors.white_light
-		colors.FilenameBg = colors.black_light
+		colors.NormalBg = colors.black_light
 		colors.arrowwhite = colors.black_light
 
 

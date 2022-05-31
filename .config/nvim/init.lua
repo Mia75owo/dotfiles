@@ -30,7 +30,7 @@ require('cfg.windline')
 
 require('cfg.neoclip')
 require('cfg.lspkind')
-require('cfg.vgit')
+--require('cfg.vgit')
 require('cfg.yabs')
 require('cfg.indent')
 require('cfg.notify')
@@ -46,6 +46,9 @@ require('cfg.lsp.lspsaga')
 require('cfg.lsp.signature')
 require('cfg.fidget')
 require('cfg.prettier')
+
+-- images in kitty
+require('cfg.hologram')
 
 -- Load custom TS grammars
 require('TSLanguages')

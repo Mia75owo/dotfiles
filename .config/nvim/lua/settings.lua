@@ -5,11 +5,6 @@
 local o = vim.opt
 local g = vim.g
 
-g.tokyonight_transparent = true
-g.tokyonight_transparent_sidebar = true
-g.tokyonight_terminal_colors = true
-g.tokyonight_dark_float = false
-
 local opt = {
   backup = false,
   cmdheight = 1,
@@ -51,10 +46,9 @@ g.vscode_style = "dark"
 g.vscode_transparency = 1
 g.vscode_italic_comment = 1
 
+-- spellchecking
 g["lexical#speel"] = 1
 g["lexical#spelllang"] = { "de_20", "en_us" }
-
-
 local lexicalAU = vim.api.nvim_create_augroup('lexical', {clear = true})
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown,mkd',
@@ -71,11 +65,20 @@ vim.cmd[[
 
 g["imager#filetypes"] = { ".md" }
 
--- set the colorscheme
+-- ===================
+-- themes/colorschemes
+-- ===================
+
+-- tokyonight settings
+g.tokyonight_transparent = true
+g.tokyonight_transparent_sidebar = true
+g.tokyonight_terminal_colors = true
+g.tokyonight_dark_float = false
 vim.cmd("colorscheme tokyonight")
 --vim.cmd("colorscheme onedark")
---vim.cmd("colorscheme codedark")
 --vim.cmd("colorscheme vscode")
+--vim.cmd("colorscheme nord")
+
 
 vim.cmd("highlight link FidgetTitle Function")
 vim.cmd("highlight link FidgetTask hlLineNr")

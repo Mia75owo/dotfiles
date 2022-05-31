@@ -65,9 +65,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # layouts
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
 
 # floating keys
 bindsym $mod+Shift+space floating toggle
@@ -129,6 +129,11 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# mousewheel
+
+bindsym --whole-window --border $mod+button4 workspace prev
+bindsym --whole-window --border $mod+button5 workspace next
+
 # window options
 # gaps
 for_window [class=".*"] border pixel 3
@@ -137,25 +142,24 @@ gaps outer 1
 
 # floating
 for_window [class="scrcpy"] floating enable
-#border_radius 200
 
 bindsym $mod+Shift+r restart
 
 # resize mode
 mode "resize" {
-        bindsym h resize shrink width 1 px or 1 ppt
-        bindsym j resize grow height 1 px or 1 ppt
-        bindsym k resize shrink height 1 px or 1 ppt
-        bindsym l resize grow width 1 px or 1 ppt
+	bindsym h resize shrink width 1 px or 1 ppt
+	bindsym j resize grow height 1 px or 1 ppt
+	bindsym k resize shrink height 1 px or 1 ppt
+	bindsym l resize grow width 1 px or 1 ppt
 
-        bindsym Left resize shrink width 1 px or 1 ppt
-        bindsym Down resize grow height 1 px or 1 ppt
-        bindsym Up resize shrink height 1 px or 1 ppt
-        bindsym Right resize grow width 1 px or 1 ppt
+	bindsym Left resize shrink width 1 px or 1 ppt
+	bindsym Down resize grow height 1 px or 1 ppt
+	bindsym Up resize shrink height 1 px or 1 ppt
+	bindsym Right resize grow width 1 px or 1 ppt
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -176,6 +180,7 @@ bindsym $mod+shift+p exec xp
 bindsym $mod+control+j exec tlm
 bindsym $mod+n exec /home/mia/.screenlayout/second_monitor.sh
 
+
 # autostart programs
 exec picom
 exec xset r rate 310 56
@@ -184,7 +189,7 @@ exec nm-applet
 
 exec bgl # the background loop
 exec_always setxkbmap -layout de -option caps:escape
-exec_always ~/.config/polybar/own0/launch.sh
+exec_always ~/.config/polybar/launch.sh
 
 # sat the two sub sound regulators to max (so you can always use just the main regulator)
 #exec_always amixer set Speaker 100

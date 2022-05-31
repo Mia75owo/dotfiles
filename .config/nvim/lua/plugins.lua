@@ -81,7 +81,7 @@ return packer.startup(function(use)
   use 'justinmk/vim-sneak'
 
   --Themes
-  use 'joshdick/onedark.vim'
+  use '/navarasu/onedark.nvim'
   use 'folke/tokyonight.nvim'
   use 'arcticicestudio/nord-vim'
   use 'rakr/vim-one'
@@ -138,6 +138,13 @@ return packer.startup(function(use)
   use 'mfussenegger/nvim-dap'
   use 'mattn/emmet-vim'
   use 'reedes/vim-lexical'
+
+	-- images (only supportet in kitty terminal)
+	use 'edluffy/hologram.nvim'
+
+	-- TODO: move this to a git repo
+	--use '~/.local/share/nvim/site/pack/packer/start/md-img.nvim'
+	use '~/.config/nvim/privatePlugins/md-img.nvim'
 
   if PACKER_BOOTSTRAP then
 	  require("packer").sync()

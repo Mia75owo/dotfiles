@@ -50,16 +50,19 @@ formatting = {
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lsp_installer = require("nvim-lsp-installer")
 
+local all_own_ops = require("cfg.lsp.settings")
 lsp_installer.on_server_ready(function(server)
-    local opts = {capabilities = capabilities}
+	local ops = {capabilities = capabilities}
 
-    if server.name == "sumneko_lua" then
-      local lua_opts = require("cfg.lsp.settings")
-      opts = vim.tbl_deep_extend("force", lua_opts, opts)
-    end
+	local own_ops = all_own_ops[server.name]
+	if own_ops ~= nil then
+		for i=1,#own_ops do
+			ops[#ops+1] = own_ops[i]
+		end
+	end
 
-    server:setup(opts)
-    vim.cmd [[ do User LspAttachBuffers ]]
+	server:setup(ops)
+	vim.cmd [[ do User LspAttachBuffers ]]
 end)
 
 vim.diagnostic.config({
