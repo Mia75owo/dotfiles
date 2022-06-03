@@ -147,7 +147,7 @@ return packer.startup(function(use)
 
 	-- TODO: move this to a git repo
 	--use '~/.local/share/nvim/site/pack/packer/start/md-img.nvim'
-	use '~/.config/nvim/privatePlugins/md-img.nvim'
+	--use '~/.config/nvim/privatePlugins/md-img.nvim'
 
   if PACKER_BOOTSTRAP then
 	  require("packer").sync()
