@@ -41,7 +41,7 @@ packer.startup{{...},
     compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
   }
 }
-require('packer_compiled')
+pcall(require, 'packer_compiled')
 
 packer.init {
   display = {
