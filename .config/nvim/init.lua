@@ -5,6 +5,15 @@
 -- ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║
 -- ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
 
+function sRequire(pl)
+	local status_ok, ret = pcall(require, pl)
+	if not status_ok then
+		print("Error loading "..pl)
+		return
+	end
+	return ret
+end
+
 -- add vimfiles directory
 vim.api.nvim_exec("set runtimepath+=/usr/share/vim/vimfiles", false)
 
@@ -13,46 +22,46 @@ vim.api.nvim_exec("set runtimepath+=/usr/share/vim/vimfiles", false)
 -- things first
 
 -- base settings
-require('keymap')
-require('settings')
+sRequire('keymap')
+sRequire('settings')
 
 -- load plugins
-require('loadPacker')
-require('impatient')
-require('plugins')
+sRequire('loadPacker')
+sRequire('impatient')
+sRequire('plugins')
 
 -- base UI plugins
-require('cfg.devicons')
-require('cfg.startify')
-require('cfg.nvimtree')
-require('cfg.bufferline')
-require('cfg.windline')
+sRequire('cfg.devicons')
+sRequire('cfg.startify')
+sRequire('cfg.nvimtree')
+sRequire('cfg.bufferline')
+sRequire('cfg.windline')
 
-require('cfg.neoclip')
-require('cfg.lspkind')
---require('cfg.vgit')
-require('cfg.yabs')
-require('cfg.indent')
-require('cfg.notify')
-require('cfg.autopairs')
-require('cfg.todo-comments')
-require('cfg.scrollbar')
---require('cfg.twilight')
+sRequire('cfg.neoclip')
+sRequire('cfg.lspkind')
+--sRequire('cfg.vgit')
+sRequire('cfg.yabs')
+sRequire('cfg.indent')
+sRequire('cfg.notify')
+sRequire('cfg.autopairs')
+sRequire('cfg.todo-comments')
+sRequire('cfg.scrollbar')
+--sRequire('cfg.twilight')
 
-require('cfg.treesitter')
-require('cfg.snippets')
-require('cfg.lsp.lsp')
-require('cfg.lsp.lspsaga')
-require('cfg.lsp.signature')
-require('cfg.fidget')
-require('cfg.prettier')
+sRequire('cfg.treesitter')
+sRequire('cfg.snippets')
+sRequire('cfg.lsp.lsp')
+sRequire('cfg.lsp.lspsaga')
+sRequire('cfg.lsp.signature')
+sRequire('cfg.fidget')
+sRequire('cfg.prettier')
 
 -- images in kitty
-require('cfg.hologram')
+sRequire('cfg.hologram')
 
 -- Load custom TS grammars
-require('TSLanguages')
+sRequire('TSLanguages')
 
-vim.notify = require("notify")
+vim.notify = sRequire("notify")
 
-require('notify')("Finished init!")
+sRequire('notify')("Finished init!")

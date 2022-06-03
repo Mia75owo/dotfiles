@@ -26,11 +26,14 @@ return packer.startup(function(use)
   use 'j-hui/fidget.nvim'
 
   -- autocompletion
-  use 'hrsh7th/nvim-cmp'
+	use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
-  use 'tzachar/cmp-tabnine'
   use 'hrsh7th/cmp-emoji'
+  use {
+		'tzachar/cmp-tabnine',
+		run = "./install.sh"
+	}
 
   -- formatting
   use 'MunifTanjim/prettier.nvim'
@@ -81,7 +84,7 @@ return packer.startup(function(use)
   use 'justinmk/vim-sneak'
 
   --Themes
-  use '/navarasu/onedark.nvim'
+  use 'navarasu/onedark.nvim'
   use 'folke/tokyonight.nvim'
   use 'arcticicestudio/nord-vim'
   use 'rakr/vim-one'
