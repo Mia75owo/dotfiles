@@ -5,6 +5,8 @@
 local o = vim.opt
 local g = vim.g
 
+local tab = 2
+
 local opt = {
   backup = false,
   cmdheight = 1,
@@ -18,10 +20,10 @@ local opt = {
   undofile = true,
   updatetime = 300,
   writebackup = false,
-  expandtab = false,
-  shiftwidth = 2,
-  softtabstop = 2,
-  tabstop = 2,
+  expandtab = true,
+  shiftwidth = tab,
+  softtabstop = tab,
+  tabstop = tab,
   cursorline = true,
   number = true,
   relativenumber = true,
@@ -46,6 +48,11 @@ g.vscode_style = "dark"
 g.vscode_transparency = 1
 g.vscode_italic_comment = 1
 
+-- settings to make vgit work better
+o.updatetime = 300
+o.incsearch = true
+vim.wo.signcolumn = 'yes'
+
 -- spellchecking
 g["lexical#speel"] = 1
 g["lexical#spelllang"] = { "de_20", "en_us" }
@@ -69,11 +76,6 @@ g["imager#filetypes"] = { ".md" }
 -- themes/colorschemes
 -- ===================
 
--- tokyonight settings
-g.tokyonight_transparent = true
-g.tokyonight_transparent_sidebar = true
-g.tokyonight_terminal_colors = true
-g.tokyonight_dark_float = false
 vim.cmd("colorscheme tokyonight")
 --vim.cmd("colorscheme onedark")
 --vim.cmd("colorscheme vscode")

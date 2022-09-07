@@ -1,10 +1,3 @@
---require("lsp_signature").setup({
-  --bind = true,
-  --handler_opts = {
-    --border = "rounded"
-  --}
---})
-
 require("lsp_signature").setup({
   debug = false, -- set to true to enable debug logging
   log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
@@ -25,7 +18,7 @@ require("lsp_signature").setup({
   -- this setting will be helpful if you do not want the PUM and floating win overlap
 
   floating_window_off_x = 1, -- adjust float windows x position.
-  floating_window_off_y = 1, -- adjust float windows y position.
+  floating_window_off_y = 0, -- adjust float windows y position.
 
 
   fix_pos = false,  -- set to true, the floating window will not auto-close until finish all parameters

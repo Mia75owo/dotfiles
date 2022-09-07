@@ -1,10 +1,12 @@
 -- ______  _     _ _______ _______ _______  ______        _____ __   _ _______
 -- |_____] |     | |______ |______ |______ |_____/ |        |   | \  | |______
 -- |_____] |_____| |       |       |______ |    \_ |_____ __|__ |  \_| |______
-                                                                            
-require"bufferline".setup{
+
+require "bufferline".setup {
   options = {
-    indicator_icon = '▍',
+    indicator = {
+      style = '▍'
+    },
     mode = "buffers", -- can also be set to "tabs" to see tabpages
     --themable = false -- whether or not the highlights for this plugin can be overriden.
     themable = true, -- whether or not the highlights for this plugin can be overriden.
@@ -26,10 +28,10 @@ require"bufferline".setup{
     ----- bufferline so use this at your discretion knowing that it has
     ----- some limitations that will NOT be fixed.
     --name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
-      ---- remove extension from markdown files for example
-      --if buf.name:match('%.md') then
-        --return vim.fn.fnamemodify(buf.name, ':t:r')
-      --end
+    ---- remove extension from markdown files for example
+    --if buf.name:match('%.md') then
+    --return vim.fn.fnamemodify(buf.name, ':t:r')
+    --end
     --end,
     --max_name_length = 18,
     --max_prefix_length = 15, -- prefix used when a buffer is deduplicated
@@ -38,9 +40,11 @@ require"bufferline".setup{
     diagnostics = "nvim_lsp",
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
       if level == "error" then
-        return " "..count
+        --return " "..count
+        return " "
       elseif level == "warning" then
-        return " "..count
+        --return " "..count
+        return " "
       elseif level == "hint" then
         return ""
       end
@@ -58,19 +62,19 @@ require"bufferline".setup{
     separator_style = "thin",
     --enforce_regular_tabs = false | true,
     --always_show_bufferline = true | false,
-    offsets = {{filetype = "NvimTree", text = "", text_align = "left"}},
+    offsets = { { filetype = "NvimTree", text = "", text_align = "left" } },
     --sort_by = "id" | "extension" | "relative_directory" | "directory" | "tabs" | function(buffer_a, buffer_b)
     ---- add custom logic
-        --return buffer_a.modified > buffer_b.modified
+    --return buffer_a.modified > buffer_b.modified
     --end
   },
 
   --highlights = {
-    --fill = {
-      --ctermbg = 'NONE',
-      --guibg = 'NONE'
-    --}
+  --fill = {
+  --ctermbg = 'NONE',
+  --guibg = 'NONE'
+  --}
   --},
 }
 
-vim.cmd[[hi BufferLineFill NONE]]
+vim.cmd [[hi BufferLineFill NONE]]

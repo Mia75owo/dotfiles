@@ -7,14 +7,9 @@ require'nvim-tree'.setup {
   hijack_netrw        = true,
   open_on_setup       = false,
   ignore_ft_on_setup  = {},
-  --auto_close          = false,
   open_on_tab         = false,
   hijack_cursor       = false,
-  update_cwd          = true,
-  update_to_buf_dir   = {
-    enable = true,
-    auto_open = true,
-  },
+  update_cwd          = false,
   diagnostics = {
     enable = true,
     icons = {
@@ -25,7 +20,7 @@ require'nvim-tree'.setup {
     }
   },
   update_focused_file = {
-    enable      = false,
+    enable      = true,
     update_cwd  = false,
     ignore_list = {}
   },
@@ -35,19 +30,57 @@ require'nvim-tree'.setup {
   },
   filters = {
     dotfiles = false,
-    custom = { }
+    custom = {
+			"^\\.git",
+			"^node_modules",
+			"^Cargo.lock",
+			"^yarn.lock",
+			"^.yarn",
+			"^.*\\.class",
+			"^.*\\.o",
+		}
   },
   view = {
     width = 30,
     height = 30,
     hide_root_folder = false,
     side = 'left',
-    auto_resize = true,
     mappings = {
       custom_only = false,
-      list = {}
+      list = {
+				{ key = {"<C-c>" }, action = "cd", mode = "n" },
+				{ key = {"y" }, action = "copy", mode = "n" },
+				{ key = {"i" }, action = "toggle_file_info", mode = "n" },
+			}
     }
-  }
+  },
+	renderer = {
+		highlight_opened_files = "name",
+		indent_markers = {
+			enable = true,
+		},
+		icons = {
+			show = {
+			},
+		},
+		special_files = {
+		}
+	},
+	git = {
+		enable = true,
+		ignore = true,
+	},
+	actions = {
+		change_dir = {
+			restrict_above_cwd = false,
+		}
+	},
+	live_filter = {
+		always_show_folders = false,
+	},
+	sort_by = "extension",
 }
 
 vim.g.nvim_tree_quit_on_open = false
+
+vim.cmd("highlight! link NvimTreeFolderIcon Directory")

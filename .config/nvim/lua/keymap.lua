@@ -3,7 +3,7 @@
 -- |    \_ |______    |    |  |  | |     | |
 
 local s = { noremap = false, silent = true }
-local n = { noremap = false, silent = false }
+--local n = { noremap = false, silent = false }
 local map = vim.api.nvim_set_keymap
 
 -- leader
@@ -50,8 +50,8 @@ map('n', '<A-r>', '<cmd>lua require("yabs"):run_task("build_and_run")<CR>', s)
 map('n', '<A-t>', '<cmd>FloatermToggle<CR>', s)
 
 -- for EMMET
-map('n', '<C-k>', '<C-y>,', s)
-map('i', '<C-k>', '<C-y>,', s)
+map('n', '<C-h>', '<C-y>,', s)
+map('i', '<C-h>', '<C-y>,', s)
 
 -- ===========
 -- Diagnostics
@@ -83,8 +83,7 @@ map('v', 'p', '"_dP', s)
 
 map('n', '<leader>sf', '<cmd>Telescope find_files<CR>', s)
 map('n', '<leader>cm', '<cmd>lua require("notify").dismiss()<CR>', s)
-map('n', '<leader>gc', '<cmd>VGit buffer_diff_preview<CR>', s)
-map('n', '<leader>fm', '<cmd>lua vim.lsp.buf.formatting_sync()<CR>', s)
+map('n', '<leader>fm', '<cmd>lua vim.lsp.buf.formatting_sync({tabSize = 2})<CR>', s)
 map('n', '<leader>td', '<cmd>TodoTelescope<CR>', s)
 map('n', '<leader>yp', '<cmd>Telescope neoclip<CR>', s)
 map('n', '<leader>bp', '<cmd>lua require"dap".toggle_breakpoint()<CR>', s)
@@ -97,8 +96,16 @@ map('i', '<C-u>', '<cmd>Telescope symbols<CR>', s)
 map('v', '<C-u>', '<cmd>Telescope symbols<CR>', s)
 
 -- Insert
-map('n', '<leader>mh', '<cmd>lua vim.api.nvim_exec([[.!figlet -w999 -d ~/.config/figlet/fonts -f "Cyberlarge" ]]..vim.api.nvim_buf_get_name(0):match("^.+/(.+)$"):match(".*%."):sub(1, -2), false)<CR>', s)
+map('n', '<leader>mh',
+  '<cmd>lua vim.api.nvim_exec([[.!figlet -w999 -d ~/.config/figlet/fonts -f "Cyberlarge" ]]..vim.api.nvim_buf_get_name(0):match("^.+/(.+)$"):match(".*%."):sub(1, -2), false)<CR>'
+  , s)
 
 vim.api.nvim_exec([[
 	nnoremap <F8> :%s/\<<C-r><C-w>\>//g<Left><Left>
 ]], false)
+
+-- Git
+map('n', '<leader>gc', '<cmd>VGit buffer_diff_preview<CR>', s)
+map('n', '<leader>gs', '<cmd>VGit buffer_diff_staged_preview<CR>', s)
+
+map('i', '<C-n>', '<cmd>lua if require("luasnip").expand_or_jumpable() then require("luasnip").expand_or_jump() end<CR>', s)

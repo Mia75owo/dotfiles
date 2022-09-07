@@ -45,7 +45,10 @@ return packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ":TSUpdate"
   }
-  use 'nvim-treesitter/playground'
+  use {
+    'nvim-treesitter/playground',
+    cmd = { "TSCaptureUnderCursor", "TSPlaygroundToggle", "TSNodeUnderCursor", "TSHighlightCapturesUnderCursor" },
+  }
 
   -- Icons
   use 'ryanoasis/vim-devicons'
@@ -57,7 +60,14 @@ return packer.startup(function(use)
   use 'rafamadriz/friendly-snippets'
 
   -- basic build system script
-  use 'pianocomposer321/yabs.nvim'
+  use {
+    'pianocomposer321/yabs.nvim',
+    cmd = { "YabsDefaultTask", "YabsTask" },
+    config = function()
+      require('cfg.yabs')
+    end,
+    module = "yabs",
+  }
 
   -- Better top bar
   use 'akinsho/bufferline.nvim'
@@ -76,9 +86,9 @@ return packer.startup(function(use)
   --Auto pairs
   use 'windwp/nvim-autopairs'
   use 'machakann/vim-sandwich'
-  --
+
   use 'editorconfig/editorconfig-vim'
-  use 'lukas-reineke/indent-blankline.nvim'
+  --use 'lukas-reineke/indent-blankline.nvim'
 
   --Better movement
   use 'justinmk/vim-sneak'
@@ -112,7 +122,7 @@ return packer.startup(function(use)
 
   -- everything else
 
-  use 'terryma/vim-multiple-cursors' --multiple cursors
+  --use 'terryma/vim-multiple-cursors' --multiple cursors
   use 'tpope/vim-eunuch' --extra comments
   use '907th/vim-auto-save' --auto save
   use 'powerman/vim-plugin-AnsiEsc'
@@ -133,6 +143,8 @@ return packer.startup(function(use)
     run = "cd app && yarn install"
   }
 
+  use 'junegunn/vim-easy-align'
+
   use 'jbyuki/instant.nvim'
   use 'petertriho/nvim-scrollbar'
   use 'jbyuki/nabla.nvim'
@@ -145,10 +157,13 @@ return packer.startup(function(use)
 	-- images (only supportet in kitty terminal)
 	use 'edluffy/hologram.nvim'
 
-	-- TODO: move this to a git repo
-	--use '~/.local/share/nvim/site/pack/packer/start/md-img.nvim'
-	--use '~/.config/nvim/privatePlugins/md-img.nvim'
+  -- rust
+  use 'simrat39/rust-tools.nvim'
 
+  -- smooth scrolling
+  use 'karb94/neoscroll.nvim'
+
+	use 'alaviss/nim.nvim'
   if PACKER_BOOTSTRAP then
 	  require("packer").sync()
 	end

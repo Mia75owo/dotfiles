@@ -18,6 +18,7 @@ let g:startify_bookmarks = [
         \ { 'c': '~/.config/nvim/init.lua' },
         \ { 'p': '~/.config/nvim/lua/plugins.lua' },
         \ { 'i': '~/.config/i3/config' },
+        \ { 's': '~/.config/sway/config' },
         \ { 'z': '~/.zshrc' },
         \ ]
 

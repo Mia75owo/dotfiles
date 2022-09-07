@@ -3,7 +3,6 @@
 -- |     | |_____|    |    |_____| |       |     | __|__ |    \_ ______|
 
 require("nvim-autopairs").setup({
-  check_ts = true
+  check_ts = true,
+  fast_wrap = {},
 })
-
-local cmp_autipairs = require("nvim-autopairs.completion.cmp")
