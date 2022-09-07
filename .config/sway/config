@@ -1,24 +1,21 @@
-# ██╗██████╗       ██╗    ██╗███╗   ███╗
-# ██║╚════██╗      ██║    ██║████╗ ████║
-# ██║ █████╔╝█████╗██║ █╗ ██║██╔████╔██║
-# ██║ ╚═══██╗╚════╝██║███╗██║██║╚██╔╝██║
-# ██║██████╔╝      ╚███╔███╔╝██║ ╚═╝ ██║
-# ╚═╝╚═════╝        ╚══╝╚══╝ ╚═╝     ╚═╝
+# ███████╗██╗    ██╗ █████╗ ██╗   ██╗     ██╗    ██╗███╗   ███╗
+# ██╔════╝██║    ██║██╔══██╗╚██╗ ██╔╝     ██║    ██║████╗ ████║
+# ███████╗██║ █╗ ██║███████║ ╚████╔╝█████╗██║ █╗ ██║██╔████╔██║
+# ╚════██║██║███╗██║██╔══██║  ╚██╔╝ ╚════╝██║███╗██║██║╚██╔╝██║
+# ███████║╚███╔███╔╝██║  ██║   ██║        ╚███╔███╔╝██║ ╚═╝ ██║
+# ╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝         ╚══╝╚══╝ ╚═╝     ╚═╝
 
 # the mod key
 set $mod Mod4
 
 set $mainShell kitty
-set $mainBrowser chromium
+set $mainBrowser chromium --ozone-platform-hint=auto
 set $mainDmenu ~/.config/rofi/launchers/colorful/launcher.sh
 set $mainPowermenu ~/.config/rofi/powermenu/powermenu.sh
 
 # media-keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 1
 bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 1
-bindsym --whole-window --border $mod+shift+button4 exec --no-startup-id pamixer -i 2
-bindsym --whole-window --border $mod+shift+button5 exec --no-startup-id pamixer -d 2
-
 bindsym XF86AudioMute exec --no-startup-id pamixer -t
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86MonBrightnessUp exec brightnessctl s +2%
@@ -89,7 +86,7 @@ set $ws10 "10: "
 # Assign programs to always open in specified workspace
 assign [class="Chromium"] $ws2
 assign [class="Steam"] $ws3
-assign [class="*steam*"] $ws3
+assign [class=".*steam.*"] $ws3
 assign [class="ATLauncher"] $ws3
 assign [class="Terraria.bin.x86_64"] $ws3
 assign [class="discord"] $ws4
@@ -125,7 +122,9 @@ bindsym --whole-window --border $mod+button5 workspace next
 
 # window options
 # gaps
-for_window [class=".*"] border pixel 3
+#for_window [class=".*"] border pixel 3
+default_border pixel 3
+default_floating_border pixel 3
 gaps inner 10
 gaps outer -1
 
@@ -133,8 +132,8 @@ gaps outer -1
 for_window [class="scrcpy"] floating enable
 for_window [class="mandelbrot"] floating enable
 
-# restart i3
-bindsym $mod+Shift+r restart
+# restart sway
+bindsym $mod+Shift+r reload
 
 # resize mode
 mode "resize" {
@@ -164,31 +163,28 @@ bindsym $mod+x exec $mainPowermenu
 bindsym $mod+shift+s exec flameshot gui
 
 # for the background loop
-bindsym $mod+shift+b exec feh --bg-scale -z ~/Pictures/wallpapers/bgl
-bindsym $mod+control+b exec bglt
-
-# some own little scripts
-bindsym $mod+shift+p exec xp
-bindsym $mod+control+j exec tlm
-bindsym $mod+n exec /home/mia/.screenlayout/second_monitor.sh
-bindsym $mod+z exec i3zen
-
-#bindsym --whole-window --border $mod+button9 exec acToggle
-bindsym $mod+c exec acToggle
+bindsym $mod+shift+b exec killall swaybg && cd ~/Pictures/wallpapers/bgl && ls | shuf -n 1 | xargs -I "{}" swaybg -i "{}"
+bindsym $mod+control+b exec way-bglt
 
 # autostart programs
-exec picom
-exec --no-startup-id nm-applet
-exec xset r rate 305 50
 exec dunst
+exec --no-startup-id nm-applet
 
-exec bgl # the background loop
-exec_always setxkbmap -layout de -option caps:escape
+exec way-bgl # the background loop
 exec_always ~/.config/polybar/launch.sh
-
-# sat the two sub sound regulators to max (so you can always use just the main regulator)
-#exec_always amixer set Speaker 100
-#exec_always amixer set Headphone 100
 
 # a little script that warns you when you have low battery
 exec batteryWarning
+
+
+# Wayland settings
+
+input * xkb_layout "de"
+input * xkb_options "caps:escape"
+
+input type:keyboard {
+    repeat_delay 305
+    repeat_rate 50
+}
+
+include /etc/sway/config.d/*
