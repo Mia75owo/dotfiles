@@ -3,14 +3,15 @@
 -- |    \_ |______    |    |  |  | |     | |
 
 local s = { noremap = false, silent = true }
---local n = { noremap = false, silent = false }
+local n = { noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
 
 -- leader
 vim.g.mapleader = ' '
 
--- disable recording of macros
-map("n", "q", "<Nop>", s)
+-- disable recording of macros and remap them
+map("n", "mm", "q", n)
+map("n", "q", "<Nop>", n)
 
 -- file browser
 map("n", "qq", "<cmd>NvimTreeToggle<CR>", s)
@@ -83,7 +84,8 @@ map('v', 'p', '"_dP', s)
 
 map('n', '<leader>sf', '<cmd>Telescope find_files<CR>', s)
 map('n', '<leader>cm', '<cmd>lua require("notify").dismiss()<CR>', s)
-map('n', '<leader>fm', '<cmd>lua vim.lsp.buf.formatting_sync({tabSize = 2})<CR>', s)
+--map('n', '<leader>fm', '<cmd>lua vim.lsp.buf.formatting_sync({tabSize = 2})<CR>', s)
+map('n', '<leader>fm', '<cmd>lua vim.lsp.buf.format({tabSize = 2})<CR>', s)
 map('n', '<leader>td', '<cmd>TodoTelescope<CR>', s)
 map('n', '<leader>yp', '<cmd>Telescope neoclip<CR>', s)
 map('n', '<leader>bp', '<cmd>lua require"dap".toggle_breakpoint()<CR>', s)
@@ -94,6 +96,9 @@ map('n', '<leader>tsr', '<cmd>%s/\\s*\\[\\d*, \\d*\\] - \\[\\d*, \\d*\\]\\s*//g<
 map('n', '<C-u>', '<cmd>Telescope symbols<CR>', s)
 map('i', '<C-u>', '<cmd>Telescope symbols<CR>', s)
 map('v', '<C-u>', '<cmd>Telescope symbols<CR>', s)
+
+-- ctags (tagbar)
+map('n', '<leader>ct', '<cmd>TagbarToggle<CR>', s)
 
 -- Insert
 map('n', '<leader>mh',

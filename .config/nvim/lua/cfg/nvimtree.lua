@@ -36,8 +36,12 @@ require'nvim-tree'.setup {
 			"^Cargo.lock",
 			"^yarn.lock",
 			"^.yarn",
+			"^.cache",
+			"^compile_commands.json",
 			"^.*\\.class",
 			"^.*\\.o",
+			"^.*\\.d",
+			"^.*\\.gch",
 		}
   },
   view = {

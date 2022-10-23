@@ -42,6 +42,7 @@ alias "figletsub"="figlet -w999 -d $HOME/.config/figlet/fonts -f 'Cyberlarge'"
 alias "dotfiles"="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias "clip"="xclip -selection c"
 alias "root"="sudo -E -s zsh"
+alias "make"="make -j 8"
 
 # load plugins
 [[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh

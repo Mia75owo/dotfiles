@@ -8,11 +8,11 @@ return packer.startup(function(use)
   use 'lewis6991/impatient.nvim'
 
   -- update packer
-	use "wbthomason/packer.nvim"
+  use "wbthomason/packer.nvim"
 
   -- global dependencies
   use 'nvim-lua/plenary.nvim'
-	use "nvim-lua/popup.nvim"
+  use "nvim-lua/popup.nvim"
 
   -- LSP, autocompletion and formatting
   use 'neovim/nvim-lspconfig'
@@ -26,14 +26,14 @@ return packer.startup(function(use)
   use 'j-hui/fidget.nvim'
 
   -- autocompletion
-	use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-emoji'
   use {
-		'tzachar/cmp-tabnine',
-		run = "./install.sh"
-	}
+    'tzachar/cmp-tabnine',
+    run = "./install.sh"
+  }
 
   -- formatting
   use 'MunifTanjim/prettier.nvim'
@@ -107,8 +107,8 @@ return packer.startup(function(use)
   -- File tree
   use 'kyazdani42/nvim-tree.lua'
   --use {
-    --'ms-jpq/chadtree',
-    --run = "python3 -m chadtree deps"
+  --'ms-jpq/chadtree',
+  --run = "python3 -m chadtree deps"
   --}
 
   -- notify
@@ -143,28 +143,48 @@ return packer.startup(function(use)
     run = "cd app && yarn install"
   }
 
+  -- TODO: make use of this
   use 'junegunn/vim-easy-align'
 
   use 'jbyuki/instant.nvim'
   use 'petertriho/nvim-scrollbar'
-  use 'jbyuki/nabla.nvim'
+  use {
+    'jbyuki/nabla.nvim',
+    ft = "markdown",
+  }
   use 'AckslD/nvim-neoclip.lua'
 
+  -- TODO: make use of this
   use 'mfussenegger/nvim-dap'
-  use 'mattn/emmet-vim'
+  use {
+    'mattn/emmet-vim',
+    ft = { "html", "javascriptreact", "typescriptreact" }
+  }
   use 'reedes/vim-lexical'
 
-	-- images (only supportet in kitty terminal)
-	use 'edluffy/hologram.nvim'
+  -- images (only supportet in kitty terminal)
+  use {
+    'edluffy/hologram.nvim',
+    ft = "markdown",
+  }
 
   -- rust
-  use 'simrat39/rust-tools.nvim'
+  use {
+    'simrat39/rust-tools.nvim',
+    ft = "rust",
+  }
 
   -- smooth scrolling
   use 'karb94/neoscroll.nvim'
 
-	use 'alaviss/nim.nvim'
+  -- tagbar (whowing the file structure)
+  use {
+    'preservim/tagbar',
+    cmd = { "Tagbar*" },
+  }
+
+  use 'alaviss/nim.nvim'
   if PACKER_BOOTSTRAP then
-	  require("packer").sync()
-	end
+    require("packer").sync()
+  end
 end)

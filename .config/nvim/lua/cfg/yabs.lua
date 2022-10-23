@@ -3,7 +3,7 @@
 --    |    |     | |_____] ______|
 
 local function cmd(command)
-    return 'FloatermNew! '..command
+  return 'FloatermNew! ' .. command
 end
 
 require('yabs'):setup({
@@ -20,7 +20,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'make',
+          command = cmd 'make',
           type = 'vim',
         },
       },
@@ -29,7 +29,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'make',
+          command = cmd 'make',
           type = 'vim',
         },
       },
@@ -38,7 +38,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'make',
+          command = cmd 'make',
           type = 'vim',
         },
       },
@@ -47,7 +47,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'yarn start',
+          command = cmd 'yarn start',
           type = 'vim',
         },
       },
@@ -56,7 +56,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'yarn start',
+          command = cmd 'yarn start',
           type = 'vim',
         },
       },
@@ -65,7 +65,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'yarn start',
+          command = cmd 'yarn start',
           type = 'vim',
         },
       },
@@ -74,7 +74,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'yarn start',
+          command = cmd 'yarn start',
           type = 'vim',
         },
       },
@@ -83,7 +83,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'yarn start',
+          command = cmd 'yarn start',
           type = 'vim',
         },
       },
@@ -92,7 +92,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'yarn start',
+          command = cmd 'yarn start',
           type = 'vim',
         },
       },
@@ -101,7 +101,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'yarn start',
+          command = cmd 'yarn start',
           type = 'vim',
         },
       },
@@ -110,7 +110,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'python3 ./main.py',
+          command = cmd 'python3 ./main.py',
           type = 'vim',
         },
       },
@@ -119,7 +119,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'java ./Program.java',
+          command = cmd 'java ./Program.java',
           type = 'vim',
         },
       },
@@ -128,11 +128,20 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd'zig build run',
+          command = cmd 'zig build run',
           type = 'vim',
         },
       },
-    }
+    },
+    rust = {
+      default_task = 'build_and_run',
+      tasks = {
+        build_and_run = {
+          command = cmd 'cargo run',
+          type = 'vim',
+        },
+      },
+    },
   },
   tasks = { -- Same values as `language.tasks`, but global
     build = {

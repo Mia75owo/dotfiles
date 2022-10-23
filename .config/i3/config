@@ -28,6 +28,7 @@ floating_modifier $mod
 
 # The two basic commands (closing windows and opening shells)
 bindsym $mod+Return exec $mainShell
+
 bindsym $mod+q kill
 
 # =====================================================================
@@ -125,6 +126,7 @@ bindsym --whole-window --border $mod+button5 workspace next
 
 # window options
 # gaps
+default_floating_border pixel 3
 for_window [class=".*"] border pixel 3
 gaps inner 10
 gaps outer -1

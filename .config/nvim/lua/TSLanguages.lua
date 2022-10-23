@@ -5,7 +5,8 @@
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.rawrscript = {
 	install_info = {
-		url = "~/rawrc/tree-sitter-rawrscript",
+		url = "~/code/lang/rawrc/tree-sitter-rawrscript",
+		--url = "~/rawrc/tree-sitter-rawrscript",
 		--url = "~/rawr/tree-sitter-rawrscript",
 		--url = "~/rawrBKU/tree-sitter-rawrscript",
 		--url = "~/rawrNEWBKU2/tree-sitter-rawrscript",

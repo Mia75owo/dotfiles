@@ -19,6 +19,7 @@ local servers = {
   "tsserver",
   "jdtls",
   "zls",
+  "lemminx",
 }
 
 -- Concat tables

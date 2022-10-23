@@ -15,7 +15,17 @@
 # full_circle     full_square     full_rounded     full_alt
 # row_circle      row_square      row_rounded      row_alt
 
-theme="full_circle"
+lock_screen=""
+quit_wm=""
+
+if pgrep -x "sway" > /dev/null; then
+    lock_screen="swaylock"
+    quit_wm="swaymsg exit"
+elif pgrep -x "i3" > /dev/null; then
+    lock_screen="i3lock"
+    quit_wm="i3-msg exit"
+fi
+
 dir="$HOME/.config/rofi/powermenu"
 
 # random colors
@@ -82,11 +92,7 @@ case $chosen in
         fi
         ;;
     $lock)
-		if [[ -f /usr/bin/i3lock ]]; then
-			i3lock
-		elif [[ -f /usr/bin/betterlockscreen ]]; then
-			betterlockscreen -l
-		fi
+        $lock_screen
         ;;
     $suspend)
 		ans=$(confirm_exit &)
@@ -103,13 +109,7 @@ case $chosen in
     $logout)
 		ans=$(confirm_exit &)
 		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-			if [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
-				openbox --exit
-			elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
-				bspc quit
-			elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
-				i3-msg exit
-			fi
+            $quit_wm
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
         else

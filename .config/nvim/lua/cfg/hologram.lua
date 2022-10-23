@@ -2,4 +2,6 @@
 -- |_____| |     | |      |     | |  ____ |_____/ |_____| |  |  |
 -- |     | |_____| |_____ |_____| |_____| |    \_ |     | |  |  |
 
-require("hologram").setup()
+require("hologram").setup({
+  auto_display = true,
+})

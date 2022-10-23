@@ -23,6 +23,9 @@ M.rust_analyzer = {
         experimental = {
           enable = true,
         },
+        disabled = {
+          "unresolved-proc-macro"
+        },
       },
     },
   }
