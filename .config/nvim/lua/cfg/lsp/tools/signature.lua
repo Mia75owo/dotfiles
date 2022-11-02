@@ -1,12 +1,12 @@
 require("lsp_signature").setup({
-  debug = false, -- set to true to enable debug logging
-  log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
+  debug = false,
+  log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log",
   -- default is  ~/.cache/nvim/lsp_signature.log
   verbose = false, -- show debug line number
 
   bind = true, -- This is mandatory, otherwise border config won't get registered.
                -- If you want to hook lspsaga or other signature handler, pls set to false
-  doc_lines = 10, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
+  doc_lines = 100, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
                  -- set to 0 if you DO NOT want any API comments be shown
                  -- This setting only take effect in insert mode, it does not affect signature help in normal
                  -- mode, 10 by default

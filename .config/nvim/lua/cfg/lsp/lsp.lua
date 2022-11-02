@@ -20,6 +20,7 @@ local servers = {
   "jdtls",
   "zls",
   "lemminx",
+  "svelte"
 }
 
 -- Concat tables
@@ -43,7 +44,7 @@ for _, k in ipairs(servers) do
       on_attach = on_attach,
     }
   )
-)
+  )
 end
 
 

@@ -46,15 +46,15 @@ require'nvim-tree'.setup {
   },
   view = {
     width = 30,
-    height = 30,
     hide_root_folder = false,
     side = 'left',
     mappings = {
       custom_only = false,
       list = {
-				{ key = {"<C-c>" }, action = "cd", mode = "n" },
-				{ key = {"y" }, action = "copy", mode = "n" },
-				{ key = {"i" }, action = "toggle_file_info", mode = "n" },
+				{ key = { "<C-c>" }, action = "cd", mode = "n" },
+				{ key = { "y" }, action = "copy", mode = "n" },
+				{ key = { "i" }, action = "toggle_file_info", mode = "n" },
+				{ key = { "I" }, action = "toggle_git_ignored", mode = "n" },
 			}
     }
   },
