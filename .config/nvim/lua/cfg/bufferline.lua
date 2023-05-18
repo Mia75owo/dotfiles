@@ -52,7 +52,7 @@ require "bufferline".setup {
     --groups = {} -- see :h bufferline-groups for details
     show_buffer_icons = true,
     show_buffer_close_icons = true,
-    show_buffer_default_icon = true,
+    --get_element_icon = function(buf) return require('nvim-web-devicons').get_icon(..., {default = false}),
     show_close_icon = true,
     --show_tab_indicators = true | false
     --persist_buffer_sort = true, -- whether or not custom sorted buffers should persist

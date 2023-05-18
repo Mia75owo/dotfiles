@@ -126,14 +126,17 @@ bindsym --whole-window --border $mod+button5 workspace next
 
 # window options
 # gaps
+default_border pixel 3
 default_floating_border pixel 3
-for_window [class=".*"] border pixel 3
+for_window [class="^.*"] border pixel 3
 gaps inner 10
-gaps outer -1
+gaps outer 0
 
 # floating
 for_window [class="scrcpy"] floating enable
 for_window [class="mandelbrot"] floating enable
+for_window [class="Qemu-system-x86_64"] floating enable
+for_window [title="tleft"] floating enable
 
 # restart i3
 bindsym $mod+Shift+r restart
@@ -156,6 +159,10 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# scratchpad
+bindsym $mod+shift+a move scratchpad
+bindsym $mod+a scratchpad show
 
 # programs
 bindsym $mod+d exec $mainDmenu

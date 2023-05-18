@@ -92,6 +92,11 @@ map('n', '<leader>bp', '<cmd>lua require"dap".toggle_breakpoint()<CR>', s)
 map('n', '<leader>tsp', '<cmd>TSPlaygroundToggle<CR>', s)
 map('n', '<leader>tsr', '<cmd>%s/\\s*\\[\\d*, \\d*\\] - \\[\\d*, \\d*\\]\\s*//g<CR>', s)
 
+-- aerial
+map('n', '<leader>a', '<cmd>AerialToggle!<CR>', s)
+map('n', '<A-N>', '<cmd>AerialPrev<CR>', s)
+map('n', '<A-n>', '<cmd>AerialNext<CR>', s)
+
 -- telescope symbols
 map('n', '<C-u>', '<cmd>Telescope symbols<CR>', s)
 map('i', '<C-u>', '<cmd>Telescope symbols<CR>', s)
@@ -113,4 +118,5 @@ vim.api.nvim_exec([[
 map('n', '<leader>gc', '<cmd>VGit buffer_diff_preview<CR>', s)
 map('n', '<leader>gs', '<cmd>VGit buffer_diff_staged_preview<CR>', s)
 
-map('i', '<C-n>', '<cmd>lua if require("luasnip").expand_or_jumpable() then require("luasnip").expand_or_jump() end<CR>', s)
+map('i', '<C-l>', '<cmd>lua if require("luasnip").expand_or_jumpable() then require("luasnip").expand_or_jump() end<CR>'
+  , s)

@@ -16,7 +16,10 @@ return packer.startup(function(use)
 
   -- LSP, autocompletion and formatting
   use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
+  --use 'williamboman/nvim-lsp-installer'
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
+  use 'jay-babu/mason-nvim-dap.nvim'
 
   -- base LSP features
   use 'tami5/lspsaga.nvim'
@@ -24,6 +27,8 @@ return packer.startup(function(use)
   use 'weilbith/nvim-code-action-menu'
   use 'onsails/lspkind-nvim'
   use 'j-hui/fidget.nvim'
+
+  use 'folke/trouble.nvim'
 
   -- autocompletion
   use 'hrsh7th/nvim-cmp'
@@ -49,6 +54,10 @@ return packer.startup(function(use)
     'nvim-treesitter/playground',
     cmd = { "TSCaptureUnderCursor", "TSPlaygroundToggle", "TSNodeUnderCursor", "TSHighlightCapturesUnderCursor" },
   }
+  use {
+    'rush-rs/tree-sitter-asm',
+    ft = { "asm", "s" }
+  }
 
   -- Icons
   use 'ryanoasis/vim-devicons'
@@ -58,6 +67,13 @@ return packer.startup(function(use)
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
   use 'rafamadriz/friendly-snippets'
+  use {
+    "benfowler/telescope-luasnip.nvim",
+    --module = "telescope._extensions.luasnip", -- lazyload
+  }
+
+  -- UI
+  use 'stevearc/dressing.nvim'
 
   -- basic build system script
   use {
@@ -114,6 +130,9 @@ return packer.startup(function(use)
   -- notify
   use 'rcarriga/nvim-notify'
 
+  -- custom modes
+  use 'Iron-E/nvim-libmodal'
+
   -- Start screen
   use 'mhinz/vim-startify'
 
@@ -148,14 +167,15 @@ return packer.startup(function(use)
 
   use 'jbyuki/instant.nvim'
   use 'petertriho/nvim-scrollbar'
-  use {
-    'jbyuki/nabla.nvim',
-    ft = "markdown",
-  }
+  --use {
+  --'jbyuki/nabla.nvim',
+  --ft = "markdown",
+  --}
   use 'AckslD/nvim-neoclip.lua'
 
-  -- TODO: make use of this
-  use 'mfussenegger/nvim-dap'
+  --use 'mfussenegger/nvim-dap'
+  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+
   use {
     'mattn/emmet-vim',
     ft = { "html", "javascriptreact", "typescriptreact" }
@@ -169,19 +189,18 @@ return packer.startup(function(use)
   }
 
   -- rust
-  use {
-    'simrat39/rust-tools.nvim',
-    ft = "rust",
-  }
+  use 'simrat39/rust-tools.nvim'
 
   -- smooth scrolling
   use 'karb94/neoscroll.nvim'
 
   -- tagbar (whowing the file structure)
-  use {
-    'preservim/tagbar',
-    cmd = { "Tagbar*" },
-  }
+  --use {
+    --'preservim/tagbar',
+    --cmd = { "Tagbar*" },
+  --}
+
+  use 'stevearc/aerial.nvim'
 
   use 'alaviss/nim.nvim'
   if PACKER_BOOTSTRAP then

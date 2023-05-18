@@ -117,7 +117,7 @@ basic.lsp_diagnos = {
 
 basic.git = {
 	name = 'git',
-	width = width_breakpoint,
+	width = 10,
 	hl_colors = {
 		green = { 'green', 'NormalBg' },
 		red = { 'red', 'NormalBg' },

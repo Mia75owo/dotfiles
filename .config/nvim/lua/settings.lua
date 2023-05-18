@@ -53,22 +53,25 @@ o.updatetime = 300
 o.incsearch = true
 vim.wo.signcolumn = 'yes'
 
+--g["lexical#speel"] = 0
+--g["lexical#spelllang"] = { "de_20", "en_us" }
 -- spellchecking
-g["lexical#speel"] = 1
-g["lexical#spelllang"] = { "de_20", "en_us" }
-local lexicalAU = vim.api.nvim_create_augroup('lexical', {clear = true})
+--[[
+local lexicalAU = vim.api.nvim_create_augroup('lexical', { clear = true })
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown,mkd',
   group = lexicalAU,
   command = 'highlight String guifg=#FFEB95'
 })
+--]]
 
 -- spell check
-vim.cmd[[
-  autocmd FileType markdown,mkd call lexical#init()
-  autocmd FileType textile call lexical#init()
-  autocmd FileType text call lexical#init({ 'spell': 0 })
-]]
+
+--vim.cmd [[
+  --autocmd FileType markdown,mkd call lexical#init()
+  --autocmd FileType textile call lexical#init()
+  --autocmd FileType text call lexical#init({ 'spell': 0 })
+--]]
 
 g["imager#filetypes"] = { ".md" }
 
@@ -84,3 +87,6 @@ vim.cmd("colorscheme tokyonight")
 
 vim.cmd("highlight link FidgetTitle Function")
 vim.cmd("highlight link FidgetTask hlLineNr")
+
+g["neovide_transparency"] = 0.5;
+g["neovide_scale_factor"] = 0.7

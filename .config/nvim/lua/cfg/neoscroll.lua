@@ -1,15 +1,19 @@
- -- __   _ _______  _____  _______ _______  ______  _____               
- -- | \  | |______ |     | |______ |       |_____/ |     | |      |     
- -- |  \_| |______ |_____| ______| |_____  |    \_ |_____| |_____ |_____
+-- __   _ _______  _____  _______ _______  ______  _____
+-- | \  | |______ |     | |______ |       |_____/ |     | |      |
+-- |  \_| |______ |_____| ______| |_____  |    \_ |_____| |_____ |_____
 
 require('neoscroll').setup({
-    -- Set any options as needed
+  mappings = { '<C-j>', '<C-jk>' },
+  hide_cursor = true,
+  stop_eof = true,
+  respect_scrolloff = false,
+  cursor_scrolls_alone = true
 })
 
 local t = {}
 -- Syntax: t[keys] = {function, {function arguments}}
-t['<C-j>'] = {'scroll', { 'vim.wo.scroll', 'true', '250'}}
-t['<C-k>'] = {'scroll', {'-vim.wo.scroll', 'true', '250'}}
+t['<C-j>'] = { 'scroll', { 'vim.wo.scroll', 'true', '250' } }
+t['<C-k>'] = { 'scroll', { '-vim.wo.scroll', 'true', '250' } }
 
 --t['<C-u>'] = {'scroll', {'-vim.wo.scroll', 'true', '250'}}
 --t['<C-d>'] = {'scroll', { 'vim.wo.scroll', 'true', '250'}}

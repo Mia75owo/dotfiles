@@ -3,9 +3,10 @@
 --    |    ______| |_____ |     | |  \_| |_____| |_____| |     | |_____| |______ ______|
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+--[[
 parser_config.rawrscript = {
 	install_info = {
-		url = "~/code/lang/rawrc/tree-sitter-rawrscript",
+		url = "~/code/Projects/lang/rawrc/tree-sitter-rawrscript",
 		--url = "~/rawrc/tree-sitter-rawrscript",
 		--url = "~/rawr/tree-sitter-rawrscript",
 		--url = "~/rawrBKU/tree-sitter-rawrscript",
@@ -18,6 +19,7 @@ parser_config.rawrscript = {
 	},
 	filetype = "rawrscript",
 }
+]]
 parser_config.tstl = {
 	install_info = {
 		url = "~/.config/nvim/tss/tree-sitter-tstl",

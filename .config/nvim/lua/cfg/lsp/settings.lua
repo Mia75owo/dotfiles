@@ -27,8 +27,14 @@ M.rust_analyzer = {
           "unresolved-proc-macro"
         },
       },
+      checkOnSave = {
+        command = "clippy",
+      },
     },
   }
+}
+M.clojure_lsp = {
+  root_dir = require'lspconfig'.util.root_pattern('main.clj')
 }
 
 return M

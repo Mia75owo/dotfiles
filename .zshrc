@@ -23,16 +23,20 @@ autoload -U compinit; compinit
 source $ZSH/oh-my-zsh.sh
 
 # aliases
+alias "n"="nvim ."
 alias ":x"="exit"
 alias "c"="printf '\033[2J\033[3J\033[1;1H' && clear"
+alias "nf"="neofetch"
 alias "bg"="$HOME/.config/polybar/shapes/scripts/pywal.sh"
 alias "btop"="btop --utf-force"
-alias "notes"="nvim $HOME/own/notes"
 alias "ls"="exa --icons"
 alias "cat"="bat --theme=ansi"
 alias "icat"="kitty +icat"
 alias "tiv"="tiv -a -j --no-dot"
-alias "time"="hyperfine --warmup 5"
+alias "todo"="nvim $HOME/own/todo"
+alias "notes"="nvim $HOME/own/notes"
+alias "old"="nvim $HOME/own/old"
+#alias "time"="hyperfine --warmup 5"
 alias "docker_clean_images"='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias "docker_clean_ps"='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 alias "ncdu"="ncdu --color=dark"
@@ -43,6 +47,7 @@ alias "dotfiles"="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias "clip"="xclip -selection c"
 alias "root"="sudo -E -s zsh"
 alias "make"="make -j 8"
+alias "fsize"="du -h"
 
 # load plugins
 [[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
@@ -58,11 +63,13 @@ export CC=/usr/bin/clang
 path+=('/usr/local/i386elfgcc/bin/')
 path+=('/usr/lib/node_modules/')
 path+=('/usr/lib/emsdk/upstream/emscripten')
-path+=('$HOME/.local/bin')
-path+=('$HOM/.local/share/gem/ruby/3.0.0/bin')
-path+=('$HOM/.yarn/bin/')
-path+=('$HOM/.nimble/bin')
+path+=("$HOME/.local/bin")
+path+=("$HOME/.local/share/gem/ruby/3.0.0/bin")
+path+=("$HOME/.yarn/bin/")
+path+=("$HOME/.nimble/bin/")
+path+=("$HOME/.choosenim/toolchains/nim-1.6.6/bin/")
 path+=($GOPATH+'/bin')
+path+=("$HOME/.cargo/bin/")
 
 # node version manager stuff
 export NVM_DIR="$HOME/.nvm"

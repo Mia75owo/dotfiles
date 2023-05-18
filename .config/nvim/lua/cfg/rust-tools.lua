@@ -91,4 +91,20 @@ require('rust-tools').setup({
       "x11",
     },
   },
+
+  server = require("cfg.lsp.settings").rust_analyzer,
+
+  --dap = {
+    --std_source_map = true,
+    --adapter = require('rust-tools.dap').get_codelldb_adapter(
+      --require('mason-registry').get_package('codelldb'):get_install_path() .. '/codelldb'
+      --require('mason-registry').get_package('codelldb'):get_install_path() .. '/extension/lldb/lib/liblldb.so'
+    --),
+    --configuration = {
+      --launch = {
+        ----preRunCommands = { "script lldb.debugger.HandleCommand('settings set target.source-map /rustc/{} \"{}/lib/rustlib/src/rust\"'.format(os.popen('rustc --version --verbose').read().split('commit-hash: ')[1].split('\\n')[0].strip(), os.popen('rustc --print sysroot').readline().strip()))" }
+        --preRunCommands = { "foobaa" }
+      --}
+    --},
+  --},
 })

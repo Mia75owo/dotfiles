@@ -20,7 +20,7 @@ require('yabs'):setup({
       default_task = 'build_and_run',
       tasks = {
         build_and_run = {
-          command = cmd 'make',
+          command = cmd 'ninja',
           type = 'vim',
         },
       },
@@ -129,6 +129,24 @@ require('yabs'):setup({
       tasks = {
         build_and_run = {
           command = cmd 'zig build run',
+          type = 'vim',
+        },
+      },
+    },
+    clojure = {
+      default_task = 'build_and_run',
+      tasks = {
+        build_and_run = {
+          command = cmd 'clojure -M ./main.clj',
+          type = 'vim',
+        },
+      },
+    },
+    nim = {
+      default_task = 'build_and_run',
+      tasks = {
+        build_and_run = {
+          command = cmd 'nim c main.nim && ./main',
           type = 'vim',
         },
       },
