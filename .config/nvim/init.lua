@@ -20,9 +20,14 @@ end
 -- add vimfiles directory
 vim.api.nvim_exec("set runtimepath+=/usr/share/vim/vimfiles", false)
 
+SRequire('install_packer')
+
 -- Load settings and plugins in order of the importancy
 -- so when there is an error it loads the most important
 -- things first
+
+-- load plugins
+SRequire('plugins')
 
 -- load the theme
 SRequire('cfg.tokyonight')
@@ -31,9 +36,7 @@ SRequire('cfg.tokyonight')
 SRequire('keymap')
 SRequire('settings')
 
--- load plugins
 SRequire('impatient')
-SRequire('plugins')
 
 -- load mason
 SRequire('cfg.mason')
