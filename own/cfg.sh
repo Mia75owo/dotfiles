@@ -17,8 +17,8 @@ sudo pacman -S git base-devel neovim curl wget btop vlc
 # install yay
 cd /opt
 sudo git clone https://aur.archlinux.org/yay.git
-sudo chown -R $user_name:$user_name ./yay-git
-cd yay-git
+sudo chown -R $user_name:$user_name ./yay
+cd yay
 makepkg -si
 
 # install pacui
@@ -33,15 +33,21 @@ yay -S zsh
 chsh -s /usr/bin/zsh
 # install oh-my-zsh
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+git clone https://github.com/jeffreytse/zsh-vi-mode $home_dir/.oh-my-zsh/custom/plugins/zsh-vi-mode
+git clone https://github.com/zsh-users/zsh-autosuggestions $home_dir/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git $home_dir/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $home_dir/.oh-my-zsh/custom/themes/powerlevel10k
 
 # dotfiles
-cd $tmp_dir
-git clone https://github.com/Nils75owo/dotfiles
-cp ./.xinitrc $home_dir/.xinitrc
-cp ./.zshrc $home_dir/.zshrc
+cd $tmp_dir/dotfiles
 cp -r ./.config/* $home_dir/.config/
 mkdir -p $home_dir/Pictures/wallpapers/bgl
 cp -r ./Pictures/wallpapers/bgl/* $home_dir/Pictures/wallpapers/bgl/
+
+tee $home_dir/.xinitrc > /dev/null << EOM
+#!/bin/sh
+i3
+EOM
 
 # install desktop
 yay -S i3-wm\
@@ -56,7 +62,8 @@ yay -S i3-wm\
   flameshot\
   network-manager-applet\
   dunst\
-  thunar
+  thunar\
+  neofetch
 
 
 
@@ -120,8 +127,8 @@ EOM
 sudo tee /usr/bin/batteryWarning > /dev/null << EOM
 #!/bin/bash
 while (( 1 == 1 )); do
-	if (( $(cat /sys/class/power_supply/BAT1/capacity) <= 10 )); then
-		if [[ $(cat /sys/class/power_supply/BAT1/status) != "Charging" ]]; then
+	if (( \$(cat /sys/class/power_supply/BAT1/capacity) <= 10 )); then
+		if [[ \$(cat /sys/class/power_supply/BAT1/status) != "Charging" ]]; then
 			notify-send "Battery Low"
 		fi
 	fi
@@ -131,7 +138,7 @@ EOM
 sudo tee /usr/bin/way-bgl > /dev/null << EOM
 #!/bin/zsh
 script_name=way-bgl
-for pid in $(pidof -x $script_name); do
+for pid in \$(pidof -x $script_name); do
     if [ $pid != $$ ]; then
         kill -9 $pid
     fi
